@@ -25,7 +25,9 @@ const people = [
 		"occupation": "assistant",
 		"parents": [],
 		"currentSpouse": 272822514
-	},
+		
+		
+},
 	{
 		"id": 409574486,
 		"firstName": "Michael",

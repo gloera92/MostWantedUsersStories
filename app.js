@@ -20,3 +20,9 @@ function searchByName(){
         console.log('Sorry, looks like there is no one with that name.');
     }
 }
+
+
+let searchResult = searchByName({people});
+console.log(searchResult);
+
+
