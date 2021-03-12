@@ -12,7 +12,7 @@ function searchByName(){
         }
         return false;
     });
-    
+
     // Rather than console logging, you need to append the filteredPeople to a table.
     if(filteredPeople.length > 0){
         console.log(filteredPeople);
@@ -26,8 +26,20 @@ let searchResult = searchByName({people});
 console.log(searchResult);
 
 // function searchByGender(gender) {
-//     let genderResult = 
+//     let genderResult =
 // }
 
 
+
+
+
+
+
 console.log(document.forms["nameForm"]['gender'].value);
+console.log(document.forms["nameForm"]['dob'].value);
+console.log(document.forms["nameForm"]['height'].value);
+console.log(document.forms["nameForm"]['weight'].value);
+console.log(document.forms["nameForm"]['eyecolor'].value);
+console.log(document.forms["nameForm"]['occupation'].value);
+console.log(document.forms["nameForm"]['parents'].value);
+console.log(document.forms["nameForm"]['currentspouse'].value);
