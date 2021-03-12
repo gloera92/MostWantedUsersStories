@@ -25,4 +25,9 @@ function searchByName(){
 let searchResult = searchByName({people});
 console.log(searchResult);
 
+// function searchByGender(gender) {
+//     let genderResult = 
+// }
 
+
+console.log(document.forms["nameForm"]['gender'].value);
