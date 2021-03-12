@@ -29,15 +29,23 @@ console.log(searchResult);
 function searchByGender(){
     let genderInput = document.forms[ 'nameForm']['gender'].value;
     let filteredGender = people.filter(function(person){
-        if(person.gender === genderInput){
+        if(person.gender == genderInput){
             return true;
         }
-        return false;
+        else{
+            return false;
+        }
     });
-
-
-
+        if(filteredGender.length > 0){
+            console.log(filteredGender);
+        }else{
+            console.log('confused gender');
+        }
 }
+    
+
+let genderResult = searchByGender({people});
+console.log(genderResult); 
 
 
 // function searchByGender(gender) {
