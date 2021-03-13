@@ -2,23 +2,24 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>devCodeCamp &middot; Most Wanted</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Most Wanted</title>
   </head>
   <body>
-
+    <header>devCodeCamps Most Wanted List</header>
 
     <form id="nameForm">
         <label for="fname">First name:</label><br>
         <input type="text" id="fname" name="fname" value=""><br>
         <label for="lname">Last name:</label><br>
         <input type="text" id="lname" name="lname" value=""><br>
-        <label for="gender">Gender:</label><br>
+        <label for="gender">Gender:(male/female)</label><br>
         <input type="text" id="gender" name="gender" value=""><br>
-        <label for="dob">D.O.B.:</label><br>
+        <label for="dob">D.O.B.:(mm/dd/yyyy)</label><br>
         <input type="text" id="dob" name="dob" value=""><br>
-        <label for="height">Height:</label><br>
+        <label for="height">Height:(inches)</label><br>
         <input type="text" id="height" name="height" value=""><br>
-        <label for="weight">Weight:</label><br>
+        <label for="weight">Weight:(lbs)</label><br>
         <input type="text" id="weight" name="weight" value=""><br>
         <label for="eyecolor">Eyecolor:</label><br>
         <input type="text" id="eyecolor" name="eyecolor" value=""><br>
@@ -28,7 +29,7 @@
         <input type="text" id="parents" name="parents" value=""><br>
         <label for="currentspouse">Currentspouse</label><br>
         <input type="text" id="currentspouse" name="currentspouse" value=""><br>
-        <input type="button" onclick="searchByGender() + searchByName()" value="Submit">
+        <input type="button" onclick="searchByGender() + searchByName() + searchByDob()" value="Submit">
 
     </form>
 

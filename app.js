@@ -1,5 +1,6 @@
 'use strict';
 
+// Name Search
 function searchByName(){
     // Grabbing the values from our nameForm form and inputs.
     let firstNameInput = document.forms['nameForm']['fname'].value;
@@ -7,7 +8,7 @@ function searchByName(){
 
     // "people" is coming from the data.js file. We have access to it within this JavaScript file.
     let filteredPeople = people.filter(function (person) {
-        if(person.firstName === firstNameInput || person.lastName === lastNameInput){
+        if(person.firstName === firstNameInput && person.lastName === lastNameInput){
             return true;
         }
         else {return false;
@@ -26,6 +27,7 @@ function searchByName(){
 let searchResult = searchByName({people});
 console.log(searchResult);
 
+// Gender search
 function searchByGender(){
     let genderInput = document.forms[ 'nameForm']['gender'].value;
     let filteredGender = people.filter(function(person){
@@ -42,15 +44,34 @@ function searchByGender(){
             console.log('confused gender');
         }
 }
-    
+
 
 let genderResult = searchByGender({people});
-console.log(genderResult); 
+console.log(genderResult);
+
+// DOB search
+
+function searchByDob(){
+    let dobInput = document.forms[ 'nameForm']['dob'].value;
+    let filteredDob = people.filter(function(person){
+        if(person.gender == dobInput){
+            return true;
+        }
+        else{
+            return false;
+        }
+    });
+        if(filteredDob.length > 0){
+            console.log(filteredDob);
+        }else{
+            console.log('Do they even know thier DOB?');
+        }
+}
 
 
-// function searchByGender(gender) {
-//     let genderResult =
-// }
+let dobResult = searchByDob({people});
+console.log(dobResult);
+
 
 
 
