@@ -209,3 +209,8 @@ function searchByCurrentspouse(){
 
 let currentSpouseResult = searchByCurrentspouse({people});
 console.log(currentSpouseResult);
+
+
+// function searchResultsFiltered(){
+//     if(searchResults)
+// }

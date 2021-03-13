@@ -14,11 +14,11 @@ body {
 img {
 	border: 4px solid;
 	padding: 0.25rem;
-	background-color:black;
-	border: 1px solid black;
-	border-radius: 0.25rem;
 	max-width: 100%;
 	height: auto;
+	margin-right:0;
+    margin-left: auto;
+    display:block;
 }
 
 .row {
@@ -37,3 +37,14 @@ img {
 	margin-top: 8px;
 	vertical-align: middle;
   }
+
+
+.formRight {
+    background-color: gray;
+    border: none;
+    color: black;
+    padding: 16px 323px;
+    text-decoration: none;
+    margin: -426px 2px;
+    cursor: pointer;
+}
