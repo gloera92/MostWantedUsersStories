@@ -1,5 +1,7 @@
 'use strict';
 
+let filteredSearch=[];
+
 // Name Search
 function searchByName(){
     // Grabbing the values from our nameForm form and inputs.
@@ -26,6 +28,8 @@ function searchByName(){
 
 let searchResult = searchByName({people});
 console.log(searchResult);
+
+filteredSearch.push(searchByName);
 
 // Gender search
 function searchByGender(){
@@ -211,6 +215,5 @@ let currentSpouseResult = searchByCurrentspouse({people});
 console.log(currentSpouseResult);
 
 
-// function searchResultsFiltered(){
-//     if(searchResults)
-// }
+
+// if functionA() ===  true   include in functionA+B+C+D+E()
