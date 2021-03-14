@@ -21,23 +21,19 @@ function searchByName(){
 
     // "people" is coming from the data.js file. We have access to it within this JavaScript file.
     let filteredPeople = people.filter(function (person) {
-        if(person.firstName == firstNameInput && person.lastName == lastNameInput){
+        if(person.firstName === firstNameInput && person.lastName === lastNameInput){
             return true;
         }
-        else {
-            return false;
-        }
+        return false;
     });
-    if(firstNameInput && lastNameInput == filteredPeople.firstName && filteredPeople.lastName){
+
+    // Rather than console logging, you need to append the filteredPeople to a table.
+    if(filteredPeople.length > 0){
         console.log(filteredPeople);
+    }else{
+        console.log('Sorry, looks like there is no one with that name.');
     }
-        else{
-            console.log('Sorry, looks like there is no one with that name.');
-            alert("Sorry, looks like there is no one with that name.")
-    }
-
-    }
-
+}
 
     // Rather than console logging, you need to append the filteredPeople to a table.
 //     if(filteredPeople.length > 0){
@@ -57,13 +53,11 @@ function searchByName(){
 // Gender search
 function searchByGender(){
     genderInput = document.forms[ 'nameForm']['gender'].value;
-    let filteredGender = people.filter(function(person){
+    let filteredGender = people.filter(function(person) {
         if(person.gender == genderInput){
             return true;
         }
-        else{
-            return false;
-        }
+        return false;
     });
         if(filteredGender.length > 0){
             console.log(filteredGender);
@@ -81,9 +75,7 @@ function searchByDob(){
         if(person.gender == dobInput){
             return true;
         }
-        else{
-            return false;
-        }
+        return false;
     });
         if(filteredDob.length > 0){
             console.log(filteredDob);
@@ -102,9 +94,7 @@ function searchByHeight(){
         if(person.height == heightInput){
             return true;
         }
-        else{
             return false;
-        }
     });
         if(filteredHeight.length > 0){
             console.log(filteredHeight);
@@ -123,9 +113,7 @@ function searchByWeight(){
         if(person.weight == weightInput){
             return true;
         }
-        else{
-            return false;
-        }
+        return false;
     });
         if(filteredWeight.length > 0){
             console.log(filteredWeight);
@@ -143,9 +131,7 @@ function searchByEyecolor(){
         if(person.eyecolor == eyecolorInput){
             return true;
         }
-        else{
-            return false;
-        }
+        return false;
     });
         if(filteredEyecolor.length > 0){
             console.log(filteredEyecolor);
@@ -163,9 +149,7 @@ function searchByOccupation(){
         if(person.occupation == occupationInput){
             return true;
         }
-        else{
-            return false;
-        }
+        return false;
     });
         if(filteredOccupation.length > 0){
             console.log(filteredOccupation);
@@ -184,9 +168,7 @@ function searchByParents(){
         if(person.parents == parentsInput){
             return true;
         }
-        else{
-            return false;
-        }
+        return false;
     });
         if(filteredParents.length > 0){
             console.log(filteredParents);
@@ -204,9 +186,7 @@ function searchByCurrentspouse(){
         if(person.currentSpouse == currentSpouseInput){
             return true;
         }
-        else{
-            return false;
-        }
+        return false;
     });
         if(filteredCurrentSpouse.length > 0){
             console.log(filteredCurrentSpouse);
@@ -229,29 +209,43 @@ function mainSearchFunction(){
 
 
     if(firstNameInput && lastNameInput >0)
+        return true;
+        {
+        searchByName({people});
+        }
+    if(genderInput > 0)
+    return true;
     {
-    searchByName({people});
-    }
-    if(genderInput > 0){
         searchByGender({people});
     }
-    if(dobInput > 0) {
+    if(dobInput > 0)
+    return true;
+    {
         searchByDob({people});
     }
-    if(heightInput > 0){
+    if(heightInput > 0)
+    return true;
+    {
         searchByHeight({people});
-
     }
-    if(weightInput > 0){
+    if(weightInput > 0)
+    return true;
+    {
         searchByWeight({people});
     }
-    if(eyecolorInput > 0){
+    if(eyecolorInput > 0)
+    return true;
+    {
         searchByEyecolor({people});
     }
-    if(parentsInput > 0){
+    if(parentsInput > 0)
+    return true;
+    {
         searchByParents({people});
     }
-    if(currentSpouseInput > 0){
+    if(currentSpouseInput > 0)
+    return true;
+    {
         searchByCurrentspouse({people});
     }
 
