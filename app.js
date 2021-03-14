@@ -1,5 +1,7 @@
 'use strict';
 
+
+
 let filteredSearch=[];
 
 // Name Search
@@ -16,20 +18,25 @@ function searchByName(){
         else {return false;
         }
     });
+    if(filteredPeople.length > 0){
+        return filteredPeople;
+    }
+
 
     // Rather than console logging, you need to append the filteredPeople to a table.
     if(filteredPeople.length > 0){
         console.log(filteredPeople);
     }else{
         console.log('Sorry, looks like there is no one with that name.');
+        {
+            alert('Sorry, looks like there is no one with that name.');
+    }
+
     }
 }
 
 
-let searchResult = searchByName({people});
-console.log(searchResult);
 
-filteredSearch.push(searchByName);
 
 // Gender search
 function searchByGender(){
@@ -49,9 +56,6 @@ function searchByGender(){
         }
 }
 
-
-let genderResult = searchByGender({people});
-console.log(genderResult);
 
 // DOB search
 
@@ -73,8 +77,6 @@ function searchByDob(){
 }
 
 
-let dobResult = searchByDob({people});
-console.log(dobResult);
 
 // height search
 
@@ -96,8 +98,6 @@ function searchByHeight(){
 }
 
 
-let heightResult = searchByHeight({people});
-console.log(heightResult);
 
 // height search
 
@@ -119,9 +119,6 @@ function searchByWeight(){
 }
 
 
-let weightResult = searchByWeight({people});
-console.log(weightResult);
-
 // eyecolor search
 
 function searchByEyecolor(){
@@ -141,9 +138,6 @@ function searchByEyecolor(){
         }
 }
 
-
-let eyecolorResult = searchByEyecolor({people});
-console.log(eyecolorResult);
 
 // occupation search
 
@@ -165,8 +159,6 @@ function searchByOccupation(){
 }
 
 
-let occupationResult = searchByOccupation({people});
-console.log(occupationResult);
 
 // Parents search
 
@@ -188,8 +180,7 @@ function searchByParents(){
 }
 
 
-let parentsResult = searchByParents({people});
-console.log(parentsResult);
+;
 
 // currentspouse search
 
@@ -210,10 +201,46 @@ function searchByCurrentspouse(){
         }
 }
 
+function mainSearchFunction(){
+    searchByName({people});
+    searchByGender({people});
+    searchByDob({people});
+    searchByHeight({people});
+    searchByWeight({people});
+    searchByEyecolor({people});
+    searchByParents({people});
+    searchByCurrentspouse({people});
 
-let currentSpouseResult = searchByCurrentspouse({people});
-console.log(currentSpouseResult);
 
 
 
-// if functionA() ===  true   include in functionA+B+C+D+E()
+}
+
+
+window.addEventListener("load", function(){
+    // (B) CREATE HTML TABLE STRING
+    var perrow = 1, // 2 CELLS PER ROW
+        html = "<table><tr>";
+    // LOOP THROUGH ARRAY AND ADD TABLE CELLS
+    for (var i=0; i<people.length; i++) {
+      // "NORMAL" CELL
+      html += `<td>${people[i].firstName}</td>`;
+      html += `<td>${people[i].lastName}</td>`;
+      html += `<td>${people[i].gender}</td>`;
+      html += `<td>${people[i].dob}</td>`;
+      html += `<td>${people[i].height}</td>`;
+      html += `<td>${people[i].weight}</td>`;
+      html += `<td>${people[i].eyeColor}</td>`;
+      html += `<td>${people[i].occupation}</td>`;
+      html += `<td>${people[i].parents}</td>`;
+      html += `<td>${people[i].currentSpouse}</td>`;
+      // BREAK INTO NEXT ROW
+      var next = i+1;
+      if (next%perrow==0 && next!=people.length) {
+        html += "</tr><tr>";
+      }
+    }
+    html += "</tr></table>";
+    // (C) ATTACH HTML TO CONTAINER
+    document.getElementById("myTable").innerHTML = html;
+  });
