@@ -17,13 +17,13 @@ let currentSpouseInput = document.forms[ 'nameForm']['currentspouse'].value;
 let filteredSearch=[];
 
 // Name Search
-function searchByName(){
+function searchByName(nameArray){
     // Grabbing the values from our nameForm form and inputs.
     firstNameInput = document.forms['nameForm']['fname'].value;
     lastNameInput = document.forms['nameForm']['lname'].value;
 
     // "people" is coming from the data.js file. We have access to it within this JavaScript file.
-    let filteredPeople = people.filter(function (person) {
+    let filteredPeople = nameArray.filter(function (person) {
         if(person.firstName === firstNameInput && person.lastName === lastNameInput){
             return true;
         }
@@ -33,17 +33,17 @@ function searchByName(){
     // Rather than console logging, you need to append the filteredPeople to a table.
     if(filteredPeople.length > 0){
         console.log(filteredPeople);
-        return filteredSearch.push(filteredPeople);
+        
     }else{
         console.log('Sorry, looks like there is no one with that name.');
     }
+    return filteredPeople;
 }
 
-
 // Gender search
-function searchByGender(){
+function searchByGender(filteredGenderArray){
     genderInput = document.forms[ 'nameForm']['gender'].value;
-    let filteredGender = people.filter(function(person) {
+    let filteredGender = filteredGenderArray.filter(function(person) {
         if(person.gender == genderInput){
             return true;
         }
@@ -51,17 +51,20 @@ function searchByGender(){
     });
         if(filteredGender.length > 0){
             console.log(filteredGender);
+            filteredSearch.push(filteredGender)
         }else{
             console.log("Gender is male or female!");
         }
+        return filteredGender;
 }
 
 
+
 // DOB search
-function searchByDob(){
+function searchByDob(dobArray){
     dobInput = document.forms[ 'nameForm']['dob'].value;
-    let filteredDob = people.filter(function(person){
-        if(person.gender == dobInput){
+    let filteredDob = dobArray.filter(function(person){
+        if(person.dob == dobInput){
             return true;
         }
         return false;
@@ -71,14 +74,15 @@ function searchByDob(){
         }else{
             console.log('Do you know thier DOB?');
         }
+        return filteredDob;
 }
 
 
 
 // height search
-function searchByHeight(){
+function searchByHeight(heightArray){
     heightInput = document.forms[ 'nameForm']['height'].value;
-    let filteredHeight = people.filter(function(person){
+    let filteredHeight = heightArray.filter(function(person){
         if(person.height == heightInput){
             return true;
         }
@@ -89,14 +93,15 @@ function searchByHeight(){
         }else{
             console.log('Do you know their Hieght?');
         }
+        return filteredHeight;
 }
 
 
 
 // height search
-function searchByWeight(){
+function searchByWeight(weightArray){
     weightInput = document.forms[ 'nameForm']['weight'].value;
-    let filteredWeight = people.filter(function(person){
+    let filteredWeight = weightArray.filter(function(person){
         if(person.weight == weightInput){
             return true;
         }
@@ -107,14 +112,15 @@ function searchByWeight(){
         }else{
             console.log('Do you know their Hieght?');
         }
+        return filteredWeight;
 }
 
 
 // eyecolor search
-function searchByEyecolor(){
+function searchByEyecolor(eyeColorArray){
     eyecolorInput = document.forms[ 'nameForm']['eyecolor'].value;
-    let filteredEyecolor = people.filter(function(person){
-        if(person.eyecolor == eyecolorInput){
+    let filteredEyecolor = eyeColorArray.filter(function(person){
+        if(person.eyeColor == eyecolorInput){
             return true;
         }
         return false;
@@ -124,13 +130,14 @@ function searchByEyecolor(){
         }else{
             console.log('Pick a different color!');
         }
+        return filteredEyecolor;
 }
 
 
 // occupation search
-function searchByOccupation(){
+function searchByOccupation(occupationArray){
     occupationInput = document.forms[ 'nameForm']['occupation'].value;
-    let filteredOccupation = people.filter(function(person){
+    let filteredOccupation = occupationArray.filter(function(person){
         if(person.occupation == occupationInput){
             return true;
         }
@@ -141,13 +148,14 @@ function searchByOccupation(){
         }else{
             console.log('Do you know their occupation?');
         }
+        return filteredOccupation;
 }
 
 
 // Parents search
-function searchByParents(){
+function searchByParents(parentArray){
     parentsInput = document.forms[ 'nameForm']['parents'].value;
-    let filteredParents = people.filter(function(person){
+    let filteredParents = parentArray.filter(function(person){
         if(person.parents == parentsInput){
             return true;
         }
@@ -158,13 +166,14 @@ function searchByParents(){
         }else{
             console.log('Do you know their parents?');
         }
+        return filteredParents;
 }
 
 
 // currentspouse search
-function searchByCurrentspouse(){
+function searchByCurrentspouse(spouseArray){
     currentSpouseInput = document.forms[ 'nameForm']['currentspouse'].value;
-    let filteredCurrentSpouse = people.filter(function(person){
+    let filteredCurrentSpouse = spouseArray.filter(function(person){
         if(person.currentSpouse == currentSpouseInput){
             return true;
         }
@@ -175,6 +184,7 @@ function searchByCurrentspouse(){
         }else{
             console.log('Do you know their curentspouse?');
         }
+        return filteredCurrentSpouse;
 }
 
 
@@ -191,47 +201,80 @@ function mainSearchFunction(){
     currentSpouseInput = document.forms[ 'nameForm']['currentspouse'].value;
 
 
+    let results = people;
     if(firstNameInput.length && lastNameInput.length > 1){
-        searchByName({people});
-        return true;
+        results = searchByName(results);
+        filteredSearch.push(searchByName);
+      
     }
         
     if(genderInput.length > 1) {
-    searchByGender({people});
-    return true;
+    results = searchByGender(results);
+  
     }
 
     if(dobInput.length > 1) {
-    searchByDob({people});
-    return true;
+        results = searchByDob(results);
     }
     
     if(heightInput.length > 1) {
-    searchByHeight({people});
-    return true;
+        results = searchByHeight(results);
+ 
     }
     
     if(weightInput.length > 1) {
-    searchByWeight({people});
-    return true;
+        results = searchByWeight(results);
+    
     }   
     
     if(eyecolorInput.length > 1) {
-    searchByEyecolor({people});
-    return true;
+        results = searchByEyecolor(results);
+    
     }         
     
     if(parentsInput.length > 1) {
-    searchByParents({people});
-    return true;
+        results = searchByParents(results);
+   
     }
     
     if(currentSpouseInput.length > 1) {
-    searchByCurrentspouse({people});
-    return true;
+        results = searchByCurrentspouse(results);
     }
-    
+    console.log(results);
+    createTableWithResults(results)
 }
+
+let headers = ['Name', 'Age', 'Country'];
+
+function createTableWithResults(){
+    let table = document.createElement('table');
+    let headerRow = document.createElement('tr');
+ 
+    headers.forEach(headerText => {
+        let header = document.createElement('th');
+        let textNode = document.createTextNode(headerText);
+        header.appendChild(textNode);
+        headerRow.appendChild(header);
+    });
+ 
+    table.appendChild(headerRow);
+ 
+    results.forEach(emp => {
+        let row = document.createElement('tr');
+ 
+        Object.values(emp).forEach(text => {
+            let cell = document.createElement('td');
+            let textNode = document.createTextNode(text);
+            cell.appendChild(textNode);
+            row.appendChild(cell);
+        })
+ 
+        table.appendChild(row);
+    });
+ 
+    myTable.appendChild(table);
+};
+
 
 
 //takes {people} data and pushes to a table
