@@ -1,4 +1,7 @@
 'use strict';
+
+
+
 let firstNameInput = document.forms['nameForm']['fname'].value;
 let lastNameInput = document.forms['nameForm']['lname'].value;
 let genderInput = document.forms[ 'nameForm']['gender'].value;
@@ -30,24 +33,11 @@ function searchByName(){
     // Rather than console logging, you need to append the filteredPeople to a table.
     if(filteredPeople.length > 0){
         console.log(filteredPeople);
+        return filteredSearch.push(filteredPeople);
     }else{
         console.log('Sorry, looks like there is no one with that name.');
     }
 }
-
-    // Rather than console logging, you need to append the filteredPeople to a table.
-//     if(filteredPeople.length > 0){
-//         console.log(filteredPeople);
-//     }else{
-//         console.log('Sorry, looks like there is no one with that name.');
-//         {
-//             alert('Sorry, looks like there is no one with that name.');
-//     }
-
-//     }
-// }
-
-
 
 
 // Gender search
@@ -68,7 +58,6 @@ function searchByGender(){
 
 
 // DOB search
-
 function searchByDob(){
     dobInput = document.forms[ 'nameForm']['dob'].value;
     let filteredDob = people.filter(function(person){
@@ -87,7 +76,6 @@ function searchByDob(){
 
 
 // height search
-
 function searchByHeight(){
     heightInput = document.forms[ 'nameForm']['height'].value;
     let filteredHeight = people.filter(function(person){
@@ -106,7 +94,6 @@ function searchByHeight(){
 
 
 // height search
-
 function searchByWeight(){
     weightInput = document.forms[ 'nameForm']['weight'].value;
     let filteredWeight = people.filter(function(person){
@@ -124,7 +111,6 @@ function searchByWeight(){
 
 
 // eyecolor search
-
 function searchByEyecolor(){
     eyecolorInput = document.forms[ 'nameForm']['eyecolor'].value;
     let filteredEyecolor = people.filter(function(person){
@@ -142,7 +128,6 @@ function searchByEyecolor(){
 
 
 // occupation search
-
 function searchByOccupation(){
     occupationInput = document.forms[ 'nameForm']['occupation'].value;
     let filteredOccupation = people.filter(function(person){
@@ -159,9 +144,7 @@ function searchByOccupation(){
 }
 
 
-
 // Parents search
-
 function searchByParents(){
     parentsInput = document.forms[ 'nameForm']['parents'].value;
     let filteredParents = people.filter(function(person){
@@ -179,7 +162,6 @@ function searchByParents(){
 
 
 // currentspouse search
-
 function searchByCurrentspouse(){
     currentSpouseInput = document.forms[ 'nameForm']['currentspouse'].value;
     let filteredCurrentSpouse = people.filter(function(person){
@@ -195,6 +177,7 @@ function searchByCurrentspouse(){
         }
 }
 
+
 function mainSearchFunction(){
     firstNameInput = document.forms['nameForm']['fname'].value;
     lastNameInput = document.forms['nameForm']['lname'].value;
@@ -208,50 +191,50 @@ function mainSearchFunction(){
     currentSpouseInput = document.forms[ 'nameForm']['currentspouse'].value;
 
 
-    if(firstNameInput && lastNameInput >0)
-        return true;
-        {
+    if(firstNameInput.length && lastNameInput.length > 1){
         searchByName({people});
-        }
-    if(genderInput > 0)
-    return true;
-    {
-        searchByGender({people});
+        return true;
     }
-    if(dobInput > 0)
+        
+    if(genderInput.length > 1) {
+    searchByGender({people});
     return true;
-    {
-        searchByDob({people});
-    }
-    if(heightInput > 0)
-    return true;
-    {
-        searchByHeight({people});
-    }
-    if(weightInput > 0)
-    return true;
-    {
-        searchByWeight({people});
-    }
-    if(eyecolorInput > 0)
-    return true;
-    {
-        searchByEyecolor({people});
-    }
-    if(parentsInput > 0)
-    return true;
-    {
-        searchByParents({people});
-    }
-    if(currentSpouseInput > 0)
-    return true;
-    {
-        searchByCurrentspouse({people});
     }
 
+    if(dobInput.length > 1) {
+    searchByDob({people});
+    return true;
+    }
+    
+    if(heightInput.length > 1) {
+    searchByHeight({people});
+    return true;
+    }
+    
+    if(weightInput.length > 1) {
+    searchByWeight({people});
+    return true;
+    }   
+    
+    if(eyecolorInput.length > 1) {
+    searchByEyecolor({people});
+    return true;
+    }         
+    
+    if(parentsInput.length > 1) {
+    searchByParents({people});
+    return true;
+    }
+    
+    if(currentSpouseInput.length > 1) {
+    searchByCurrentspouse({people});
+    return true;
+    }
+    
 }
 
 
+//takes {people} data and pushes to a table
 window.addEventListener("load", function(){
     // (B) CREATE HTML TABLE STRING
     var perrow = 1, // 2 CELLS PER ROW
