@@ -241,13 +241,13 @@ function mainSearchFunction(){
         results = searchByCurrentspouse(results);
     }
     console.log(results);
-    createTableWithResults(results)
+    createTableWithResults(results);
 }
 
-let headers = ['Name', 'Age', 'Country'];
+let headers = ['First Name', 'Last Name', 'Gender', 'Date of Birth', 'Height', 'Weight', 'Eye Color', 'Occupation', 'Parents', 'CurrentSpouse'];
 
-function createTableWithResults(){
-    let table = document.createElement('table');
+function createTableWithResults(test){
+    let filteredTable = document.createElement('filteredTable');
     let headerRow = document.createElement('tr');
  
     headers.forEach(headerText => {
@@ -257,9 +257,9 @@ function createTableWithResults(){
         headerRow.appendChild(header);
     });
  
-    table.appendChild(headerRow);
+    filteredTable.appendChild(headerRow);
  
-    results.forEach(emp => {
+    test.forEach(emp => {
         let row = document.createElement('tr');
  
         Object.values(emp).forEach(text => {
@@ -269,10 +269,10 @@ function createTableWithResults(){
             row.appendChild(cell);
         })
  
-        table.appendChild(row);
+       filteredTable.appendChild(row);
     });
  
-    myTable.appendChild(table);
+        myTable.appendChild(filteredTable);
 };
 
 
