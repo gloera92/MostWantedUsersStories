@@ -32,7 +32,7 @@ function searchByFirstName(firstNameArray){
         console.log(filteredFirstName);
 
     }else{
-        console.log('Sorry, looks like there is no one with that name.');
+        alert('Sorry, looks like there is no one with that First Name.');
     }
     return filteredFirstName;
 }
@@ -54,7 +54,7 @@ function searchByLastName(lastNameArray){
         console.log(filteredLastName);
 
     }else{
-        console.log('Sorry, looks like there is no one with that name.');
+        alert('Sorry there is no one with that Last Name');
     }
     return filteredLastName;
 }
@@ -72,7 +72,7 @@ function searchByGender(filteredGenderArray){
             console.log(filteredGender);
 
         }else{
-            console.log("Gender is male or female!");
+            alert("Sorry that is not a gender");
         }
         return filteredGender;
 }
@@ -89,7 +89,7 @@ function searchByDob(dobArray){
         if(filteredDob.length > 0){
             console.log(filteredDob);
         }else{
-            console.log('Do you know thier DOB?');
+           alert('No date of birth found');
         }
         return filteredDob;
 }
@@ -106,7 +106,7 @@ function searchByHeight(heightArray){
         if(filteredHeight.length > 0){
             console.log(filteredHeight);
         }else{
-            console.log('Do you know their Hieght?');
+            alert('height does not match records?');
         }
         return filteredHeight;
 }
@@ -123,7 +123,7 @@ function searchByWeight(weightArray){
         if(filteredWeight.length > 0){
             console.log(filteredWeight);
         }else{
-            console.log('Do you know their Hieght?');
+            alert('weight does not match records?');
         }
         return filteredWeight;
 }
@@ -140,7 +140,7 @@ function searchByEyecolor(eyeColorArray){
         if(filteredEyecolor.length > 0){
             console.log(filteredEyecolor);
         }else{
-            console.log('Pick a different color!');
+            alert('eye color does not match records!');
         }
         return filteredEyecolor;
 }
@@ -157,7 +157,7 @@ function searchByOccupation(occupationArray){
         if(filteredOccupation.length > 0){
             console.log(filteredOccupation);
         }else{
-            console.log('Do you know their occupation?');
+            alert('occupation does not match records');
         }
         return filteredOccupation;
 }
@@ -174,7 +174,7 @@ function searchByParents(parentArray){
         if(filteredParents.length > 0){
             console.log(filteredParents);
         }else{
-            console.log('Do you know their parents?');
+           alert('No parents found users search');
         }
         return filteredParents;
 }
@@ -191,7 +191,7 @@ function searchByCurrentspouse(spouseArray){
         if(filteredCurrentSpouse.length > 0){
             console.log(filteredCurrentSpouse);
         }else{
-            console.log('Do you know their curentspouse?');
+            alert('does not match our records for spouses');
         }
         return filteredCurrentSpouse;
 }
