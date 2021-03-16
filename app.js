@@ -195,6 +195,7 @@ function searchByCurrentspouse(spouseArray){
         }
         return filteredCurrentSpouse;
 }
+// main search function
 
 function mainSearchFunction(){
     firstNameInput = document.forms['nameForm']['fname'].value;
@@ -209,6 +210,11 @@ function mainSearchFunction(){
     currentSpouseInput = document.forms[ 'nameForm']['currentspouse'].value;
 
     let results = people;
+
+    // if(results.length > 1){
+    //     resetFunction(filteredTable);
+    // }
+
     if(firstNameInput.length > 1){
         results = searchByFirstName(results);
 
@@ -313,3 +319,9 @@ function createTableWithResults(test){
 
         myTable.appendChild(baseConfig);
 };
+
+
+
+// function resetFunction(){
+//     document.getElementById("filteredTable").deleteRow((results) > 0);
+// }
