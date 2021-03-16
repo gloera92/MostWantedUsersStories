@@ -1,7 +1,5 @@
 'use strict';
 
-
-
 let firstNameInput = document.forms['nameForm']['fname'].value;
 let lastNameInput = document.forms['nameForm']['lname'].value;
 let genderInput = document.forms[ 'nameForm']['gender'].value;
@@ -12,9 +10,9 @@ let eyecolorInput = document.forms[ 'nameForm']['eyecolor'].value;
 let occupationInput = document.forms[ 'nameForm']['occupation'].value;
 let parentsInput = document.forms[ 'nameForm']['parents'].value;
 let currentSpouseInput = document.forms[ 'nameForm']['currentspouse'].value;
+let headers = ['ID', 'First Name', 'Last Name', 'Gender', 'Date of Birth', 'Height', 'Weight', 'Eye Color', 'Occupation', 'Parents', 'CurrentSpouse'];
 
-
-let filteredSearch=[];
+baseTableConfiguration(people);
 
 // Name Search
 function searchByFirstName(firstNameArray){
@@ -72,14 +70,12 @@ function searchByGender(filteredGenderArray){
     });
         if(filteredGender.length > 0){
             console.log(filteredGender);
-            filteredSearch.push(filteredGender)
+
         }else{
             console.log("Gender is male or female!");
         }
         return filteredGender;
 }
-
-
 
 // DOB search
 function searchByDob(dobArray){
@@ -98,8 +94,6 @@ function searchByDob(dobArray){
         return filteredDob;
 }
 
-
-
 // height search
 function searchByHeight(heightArray){
     heightInput = document.forms[ 'nameForm']['height'].value;
@@ -116,8 +110,6 @@ function searchByHeight(heightArray){
         }
         return filteredHeight;
 }
-
-
 
 // height search
 function searchByWeight(weightArray){
@@ -136,7 +128,6 @@ function searchByWeight(weightArray){
         return filteredWeight;
 }
 
-
 // eyecolor search
 function searchByEyecolor(eyeColorArray){
     eyecolorInput = document.forms[ 'nameForm']['eyecolor'].value;
@@ -153,7 +144,6 @@ function searchByEyecolor(eyeColorArray){
         }
         return filteredEyecolor;
 }
-
 
 // occupation search
 function searchByOccupation(occupationArray){
@@ -172,7 +162,6 @@ function searchByOccupation(occupationArray){
         return filteredOccupation;
 }
 
-
 // Parents search
 function searchByParents(parentArray){
     parentsInput = document.forms[ 'nameForm']['parents'].value;
@@ -189,7 +178,6 @@ function searchByParents(parentArray){
         }
         return filteredParents;
 }
-
 
 // currentspouse search
 function searchByCurrentspouse(spouseArray){
@@ -208,7 +196,6 @@ function searchByCurrentspouse(spouseArray){
         return filteredCurrentSpouse;
 }
 
-
 function mainSearchFunction(){
     firstNameInput = document.forms['nameForm']['fname'].value;
     lastNameInput = document.forms['nameForm']['lname'].value;
@@ -220,7 +207,6 @@ function mainSearchFunction(){
     occupationInput = document.forms[ 'nameForm']['occupation'].value;
     parentsInput = document.forms[ 'nameForm']['parents'].value;
     currentSpouseInput = document.forms[ 'nameForm']['currentspouse'].value;
-
 
     let results = people;
     if(firstNameInput.length > 1){
@@ -270,10 +256,8 @@ function mainSearchFunction(){
     createTableWithResults(results);
 }
 
-let headers = ['First Name', 'Last Name', 'Gender', 'Date of Birth', 'Height', 'Weight', 'Eye Color', 'Occupation', 'Parents', 'CurrentSpouse'];
-
 function createTableWithResults(test){
-    let filteredTable = document.createElement('filteredTable');
+    let filteredTable2 = document.createElement('filteredTable');
     let headerRow = document.createElement('tr');
 
     headers.forEach(headerText => {
@@ -283,7 +267,7 @@ function createTableWithResults(test){
         headerRow.appendChild(header);
     });
 
-    filteredTable.appendChild(headerRow);
+    filteredTable2.appendChild(headerRow);
 
     test.forEach(emp => {
         let row = document.createElement('tr');
@@ -295,39 +279,37 @@ function createTableWithResults(test){
             row.appendChild(cell);
         })
 
-       filteredTable.appendChild(row);
+       filteredTable2.appendChild(row);
     });
 
-        myTable.appendChild(filteredTable);
+       filteredTable.appendChild(filteredTable2);
 };
 
+  function baseTableConfiguration(people){
+    let baseConfig = document.createElement('myTable');
+    let headerRow = document.createElement('tr');
 
+    headers.forEach(headerText => {
+        let header = document.createElement('th');
+        let textNode = document.createTextNode(headerText);
+        header.appendChild(textNode);
+        headerRow.appendChild(header);
+    });
 
-//takes {people} data and pushes to a table
-window.addEventListener("load", function(){
-    // (B) CREATE HTML TABLE STRING
-    var perrow = 1, // 2 CELLS PER ROW
-        html = "<table><tr>";
-    // LOOP THROUGH ARRAY AND ADD TABLE CELLS
-    for (var i=0; i<people.length; i++) {
-      // "NORMAL" CELL
-      html += `<td>${people[i].firstName}</td>`;
-      html += `<td>${people[i].lastName}</td>`;
-      html += `<td>${people[i].gender}</td>`;
-      html += `<td>${people[i].dob}</td>`;
-      html += `<td>${people[i].height}</td>`;
-      html += `<td>${people[i].weight}</td>`;
-      html += `<td>${people[i].eyeColor}</td>`;
-      html += `<td>${people[i].occupation}</td>`;
-      html += `<td>${people[i].parents}</td>`;
-      html += `<td>${people[i].currentSpouse}</td>`;
-      // BREAK INTO NEXT ROW
-      var next = i+1;
-      if (next%perrow==0 && next!=people.length) {
-        html += "</tr><tr>";
-      }
-    }
-    html += "</tr></table>";
-    // (C) ATTACH HTML TO CONTAINER
-    document.getElementById("myTable").innerHTML = html;
-  });
+    baseConfig.appendChild(headerRow);
+
+    people.forEach(emp => {
+        let row = document.createElement('tr');
+
+        Object.values(emp).forEach(text => {
+            let cell = document.createElement('td');
+            let textNode = document.createTextNode(text);
+            cell.appendChild(textNode);
+            row.appendChild(cell);
+        })
+
+       baseConfig.appendChild(row);
+    });
+
+        myTable.appendChild(baseConfig);
+};
