@@ -17,27 +17,48 @@ let currentSpouseInput = document.forms[ 'nameForm']['currentspouse'].value;
 let filteredSearch=[];
 
 // Name Search
-function searchByName(nameArray){
+function searchByFirstName(firstNameArray){
     // Grabbing the values from our nameForm form and inputs.
     firstNameInput = document.forms['nameForm']['fname'].value;
-    lastNameInput = document.forms['nameForm']['lname'].value;
 
     // "people" is coming from the data.js file. We have access to it within this JavaScript file.
-    let filteredPeople = nameArray.filter(function (person) {
-        if(person.firstName === firstNameInput && person.lastName === lastNameInput){
+    let filteredFirstName = firstNameArray.filter(function (person) {
+        if(person.firstName === firstNameInput){
             return true;
         }
         return false;
     });
 
     // Rather than console logging, you need to append the filteredPeople to a table.
-    if(filteredPeople.length > 0){
-        console.log(filteredPeople);
-        
+    if(filteredFirstName.length > 0){
+        console.log(filteredFirstName);
+
     }else{
         console.log('Sorry, looks like there is no one with that name.');
     }
-    return filteredPeople;
+    return filteredFirstName;
+}
+
+// Name Search
+function searchByLastName(lastNameArray){
+    // Grabbing the values from our nameForm form and inputs.
+    lastNameInput = document.forms['nameForm']['lname'].value;
+
+    let filteredLastName = lastNameArray.filter(function (person) {
+        if(person.lastName === lastNameInput){
+            return true;
+        }
+        return false;
+    });
+
+    // Rather than console logging, you need to append the filteredPeople to a table.
+    if(filteredLastName.length > 0){
+        console.log(filteredLastName);
+
+    }else{
+        console.log('Sorry, looks like there is no one with that name.');
+    }
+    return filteredLastName;
 }
 
 // Gender search
@@ -202,41 +223,46 @@ function mainSearchFunction(){
 
 
     let results = people;
-    if(firstNameInput.length && lastNameInput.length > 1){
-        results = searchByName(results);
-        filteredSearch.push(searchByName);
-      
+    if(firstNameInput.length > 1){
+        results = searchByFirstName(results);
+
     }
-        
+
+    if(lastNameInput.length > 1){
+        results = searchByLastName(results);
+
+    }
+
+
     if(genderInput.length > 1) {
     results = searchByGender(results);
-  
+
     }
 
     if(dobInput.length > 1) {
         results = searchByDob(results);
     }
-    
+
     if(heightInput.length > 1) {
         results = searchByHeight(results);
- 
+
     }
-    
+
     if(weightInput.length > 1) {
         results = searchByWeight(results);
-    
-    }   
-    
+
+    }
+
     if(eyecolorInput.length > 1) {
         results = searchByEyecolor(results);
-    
-    }         
-    
+
+    }
+
     if(parentsInput.length > 1) {
         results = searchByParents(results);
-   
+
     }
-    
+
     if(currentSpouseInput.length > 1) {
         results = searchByCurrentspouse(results);
     }
@@ -249,29 +275,29 @@ let headers = ['First Name', 'Last Name', 'Gender', 'Date of Birth', 'Height', '
 function createTableWithResults(test){
     let filteredTable = document.createElement('filteredTable');
     let headerRow = document.createElement('tr');
- 
+
     headers.forEach(headerText => {
         let header = document.createElement('th');
         let textNode = document.createTextNode(headerText);
         header.appendChild(textNode);
         headerRow.appendChild(header);
     });
- 
+
     filteredTable.appendChild(headerRow);
- 
+
     test.forEach(emp => {
         let row = document.createElement('tr');
- 
+
         Object.values(emp).forEach(text => {
             let cell = document.createElement('td');
             let textNode = document.createTextNode(text);
             cell.appendChild(textNode);
             row.appendChild(cell);
         })
- 
+
        filteredTable.appendChild(row);
     });
- 
+
         myTable.appendChild(filteredTable);
 };
 
